@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-aws s3 sync ~/Documents/shared_content/www/. s3://koster.ninja/bustime
+aws s3 sync /Users/taco/Documents/working/mcts-getvehicles-www s3://koster.ninja/bustime --delete --exact-timestamps
