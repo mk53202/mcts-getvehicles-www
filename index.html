@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" src="js/bustime.js"></script>
+
+    <title>Bustime Tracker</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="map"></div>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZjegExYeAVl_3Z_QIeh8M8A8FvCaLiHQ&callback=initMap">
+    </script>
+  </body>
+</html>
+
+<!--
+https://developers.google.com/maps/documentation/javascript/examples/layer-data-simple
+https://developers.google.com/maps/documentation/javascript/mysql-to-maps
+https://developers.google.com/maps/documentation/javascript/examples/marker-remove
+https://www.reddit.com/r/learnjavascript/comments/4bm9a5/google_maps_api_clear_existing_markers_before/
+
+server {
+  location /getvehicles {
+   proxy_pass http://127.0.0.1:7300/;
+   expires -1;
+   log_not_found off;
+  }
+}
+-->
