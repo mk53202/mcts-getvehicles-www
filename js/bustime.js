@@ -70,10 +70,20 @@ function addMarker(location, route, destination) {
   // text.textContent = my_vehicle + " - " + my_timestamp
   // infowincontent.appendChild(text);
 
+  marker.addListener('mouseover', function() {
+    infoWindow.setContent(infowincontent);
+    infoWindow.open(map, marker);
+  })
+
   marker.addListener('click', function() {
     infoWindow.setContent(infowincontent);
     infoWindow.open(map, marker);
   })
+
+  marker.addListener('mouseout', function() {
+    infoWindow.close(map, marker);
+  })
+
 }
 
 // Sets the map on all markers in the array.
