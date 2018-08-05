@@ -40,7 +40,7 @@ function initMap() {
       addMarker(marker, vehicle.rt, vehicle.des)
     })
     }); // downloadUrl
-  }, 5000) // setInterval
+  }, 10000) // setInterval
 } //initMap
 
 // Adds a marker to the map and push to the array.
@@ -55,7 +55,6 @@ function addMarker(location, route, destination) {
     map: map,
     icon: bus_icon
   });
-  console.log('Marker: ' + marker.location);
   markers.push(marker);
 
   var infoWindow = new google.maps.InfoWindow;
@@ -90,7 +89,6 @@ function addMarker(location, route, destination) {
 function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
-    // console.log(markers[i]);
   }
 }
 
