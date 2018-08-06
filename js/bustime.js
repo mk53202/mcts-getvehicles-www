@@ -1,4 +1,5 @@
 // bustime.js
+// https://javascript.info/settimeout-setinterval
 
 var map;
 var markers = [];
@@ -19,29 +20,26 @@ function initMap() {
       }
     ]
   };
-
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
     center: myMapCenter
   });
-  map.setOptions({styles: mapOptionsHide['hide']});
+  map.setOptions({styles: mapOptionsHide['hide']})
 
-  setInterval(function() { // Timer Loop
+  busRefreshLoop() // https://stackoverflow.com/questions/6685396/execute-the-setinterval-function-without-delay-the-first-time
+}
 
-    // Data Fetch
-    downloadUrl('http://koster.ninja/getvehicles', function(data) {
+function busRefreshLoop() {
+  downloadUrl('http://koster.ninja/getvehicles', function(data) {
     var json_response = JSON.parse(data.response) // Transform JSON String to Object
-
     clearMarkers()
-
-    // Data Loop
     json_response["vehicle"].forEach(function(vehicle) {
       var marker = {lat: parseFloat(vehicle.lat), lng: parseFloat(vehicle.lon)};
       addMarker(marker, vehicle.rt, vehicle.des)
     })
-    }); // downloadUrl
-  }, 10000) // setInterval
-} //initMap
+  }) // downloadUrl
+  setTimeout(busRefreshLoop, 10000)
+}
 
 // Adds a marker to the map and push to the array.
 function addMarker(location, route, destination) {
